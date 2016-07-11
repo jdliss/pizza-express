@@ -1,4 +1,5 @@
 const assert = require('assert');
+const request = require('request');
 const app = require('../server');
 
 before(done => {
