@@ -113,6 +113,7 @@ describe('Server', () => {
     });
 
     it('should redirect the user to their new pizza', (done) => {
+      app.locals.pizzas = {};
       var payload = { pizza: fixtures.validPizza };
 
       this.request.post('/pizzas', { form: payload }, (error, response) => {

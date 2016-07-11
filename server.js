@@ -4,11 +4,13 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const generateId = require('./lib/generate-id');
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('port', process.env.PORT || 3000);
 app.locals.title = 'Pizza Express';
 app.locals.pizzas = {};
+
 
 app.set('view engine', 'jade')
 
@@ -28,12 +30,10 @@ app.post('/pizzas', (request, response) => {
   response.redirect('/pizzas/' + id);
 });
 
-
 app.get('/pizzas/:id', (request, response) => {
   var pizza = app.locals.pizzas[request.params.id];
   response.render('pizza', { pizza: pizza });
 });
-
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {
