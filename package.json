@@ -1,0 +1,29 @@
+{
+  "name": "pizza-express",
+  "version": "1.0.0",
+  "description": "a place to admire pizzas",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdliss/pizza-express.git"
+  },
+  "keywords": [
+    "express",
+    "pizza"
+  ],
+  "author": "Jon Liss",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jdliss/pizza-express/issues"
+  },
+  "homepage": "https://github.com/jdliss/pizza-express#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3"
+  }
+}
