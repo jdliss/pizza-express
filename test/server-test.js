@@ -51,12 +51,6 @@ describe('Server', () => {
       app.locals.pizzas = {};
     });
 
-    it('should receive and store data', (done) => {
-      // Our implementation will go here…
-      assert(true);
-      done();
-    });
-
     it('should not return 404', (done) => {
       this.request.post('/pizzas', (error, response) => {
         if (error) { done(error); }
@@ -75,6 +69,21 @@ describe('Server', () => {
 
         assert.equal(pizzaCount, 1, `Expected 1 pizzas, found ${pizzaCount}`);
 
+        done();
+      });
+    });
+  });
+
+  describe('GET /pizzas/:id', () => {
+
+    beforeEach(() => {
+      app.locals.pizzas.testPizza = fixtures.validPizza;
+    });
+
+    it('should not return 404', (done) => {
+      this.request.get('/pizzas/testPizza', (error, response) => {
+        if (error) { done(error); }
+        assert.notEqual(response.statusCode, 404);
         done();
       });
     });
