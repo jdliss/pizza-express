@@ -13,7 +13,7 @@ app.locals.pizzas = {};
 app.set('view engine', 'jade')
 
 app.get('/', (request, response) => {
-    response.render('index');
+  response.render('index');
 });
 
 app.listen(app.get('port'), () => {
@@ -27,7 +27,8 @@ app.post('/pizzas', (request, response) => {
 });
 
 app.get('/pizzas/:id', (request, response) => {
-  response.sendStatus(200);
+  var pizza = app.locals.pizzas[request.params.id];
+  response.render('pizza', { pizza: pizza });
 });
 
 if (!module.parent) {
