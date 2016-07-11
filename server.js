@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const bodyParser = require('body-parser');
+const generateId = require('./lib/generate-id');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set('port', process.env.PORT || 3000);
 app.locals.title = 'Pizza Express';
 app.locals.pizzas = {};
@@ -17,6 +21,8 @@ app.listen(app.get('port'), () => {
 });
 
 app.post('/pizzas', (request, response) => {
+  var id = generateId();
+  app.locals.pizzas[id] = request.body;
   response.sendStatus(201);
 });
 
